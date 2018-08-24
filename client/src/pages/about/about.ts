@@ -4,18 +4,21 @@ import { TaskService } from '../../app/services/task.service';
 import { ToastController } from 'ionic-angular';
 import { Task } from '../../app/model/task.model';
 
+import { Events } from 'ionic-angular';
+
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 export class AboutPage {
-
+  
   taskname: string;
 
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public taskService: TaskService
+    public taskService: TaskService,
+    public events: Events
   ) {
 
   }
@@ -25,7 +28,9 @@ export class AboutPage {
     task.taskname = this.taskname;
     this.taskService.AddTask({taskname: this.taskname}).subscribe(
       res => {
-        console.log(res)
+        this.events.publish('task:created', res);
+        this.taskname = null;
+        this.ShowToast();
       },
       err => {
         console.log(err)

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TaskService } from '../../app/services/task.service';
 
+import { Events } from 'ionic-angular';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -12,9 +14,15 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public taskService: TaskService
+    public taskService: TaskService,
+    public events: Events
   ) {
     this.GetTask()
+
+    events.subscribe('task:created', (task) => {
+      this.taskList.push(task);
+    });
+
   }
 
   GetTask() {

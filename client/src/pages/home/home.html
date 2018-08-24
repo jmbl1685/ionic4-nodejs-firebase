@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="title">Task List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="card" *ngFor="let task of taskList">
+    <div class="card-body">
+      <h2>{{task.taskname}}</h2>
+      <p>
+        <b>State: </b> {{task.completed}}
+      </p>
+      <p>
+        <b>createdAt: </b> {{task.createdAt}}
+      </p>
+    </div>
+  </div>
+
+</ion-content>

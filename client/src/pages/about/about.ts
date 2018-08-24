@@ -28,9 +28,9 @@ export class AboutPage {
     task.taskname = this.taskname;
     this.taskService.AddTask({taskname: this.taskname}).subscribe(
       res => {
-        this.events.publish('task:created', res);
-        this.taskname = null;
         this.ShowToast();
+        this.events.publish('task:created', res);
+        this.taskname = "";
       },
       err => {
         console.log(err)

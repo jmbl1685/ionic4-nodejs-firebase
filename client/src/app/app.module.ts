@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TaskService } from './services/task.service';
+import { EditTaskPage } from '../pages/edit-task/edit-task';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TaskService } from './services/task.service';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    EditTaskPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { TaskService } from './services/task.service';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    EditTaskPage
   ],
   providers: [
     TaskService,

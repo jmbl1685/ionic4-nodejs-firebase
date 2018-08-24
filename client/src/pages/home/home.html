@@ -6,15 +6,32 @@
 
 <ion-content padding>
 
+
+
   <div class="card" *ngFor="let task of taskList">
     <div class="card-body">
-      <h2>{{task.taskname}}</h2>
-      <p>
-        <b>State: </b> {{task.completed}}
-      </p>
-      <p>
-        <b>createdAt: </b> {{task.createdAt}}
-      </p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-10>
+
+            <h2>{{task.taskname}}</h2>
+            <p>
+              <b>State: </b> {{task.completed}}
+            </p>
+            <p>
+              <b>createdAt: </b> {{task.createdAt}}
+            </p>
+
+          </ion-col>
+          <ion-col col-2><br>
+            <img (click)="AlertDeleteTask(task)" src="https://image.flaticon.com/icons/svg/264/264034.svg" height="30" width="30"><br><br>
+            <img (click)="UpdateTaskPage(task)"src="https://image.flaticon.com/icons/svg/148/148926.svg" height="25" width="25">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
     </div>
   </div>
 

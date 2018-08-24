@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Edit Task
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label stacked>Taskname</ion-label>
+    <ion-input type="text" name="taskname_txt" #taskname_txt="ngModel" [(ngModel)]="task.taskname"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Completed</ion-label>
+    <ion-input type="text" name="completed_txt" #completed_txt="ngModel" [(ngModel)]="task.completed"></ion-input>
+  </ion-item>
+
+  <br>
+
+  <button ion-button full (click)="UpdateTask()">Update</button>
+
+
+</ion-content>

@@ -1,27 +1,20 @@
 'use strict'
 
 const { db } = require('../firebase')
-const tasksRef = db.ref('/tasks')
+let tasksRef = db.ref('/tasks')
 const Task = require('../models/task.model')
 
 const TaskController = {}
 
 TaskController.GetTask = async (req, res) => {
 
-  tasksRef.on('value', snap => {
+  const data = await tasksRef.once("value")
+  const response = data.val()
 
-    if (snap.val() === null)
-
-      return res.status(200).send({
-        message: 'Not have Task'
-      })
-
-    let task = Object.values(snap.val())
+  let task = Object.values(response)
       .map(obj => { return new Task(obj) })
 
-    return res.status(200).send(task)
-
-  })
+  res.status(200).send(task)
 
 }
 
@@ -30,7 +23,7 @@ TaskController.AddTask = async (req, res) => {
   const id = tasksRef.push().key
   const { taskname } = req.body
 
-  const task = new Task({
+  let task = new Task({
     id,
     taskname,
     completed: false,

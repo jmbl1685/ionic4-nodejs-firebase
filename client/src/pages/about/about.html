@@ -8,4 +8,14 @@
 
 <ion-content padding>
 
+  <ion-item>
+    <ion-label stacked>Taskname</ion-label>
+    <ion-input type="text" name="taskname_txt" #taskname_txt="ngModel" [(ngModel)]="taskname"></ion-input>
+  </ion-item>
+
+  <br>
+
+  <button ion-button full (click)="AddTask()">Add</button>
+
+
 </ion-content>
